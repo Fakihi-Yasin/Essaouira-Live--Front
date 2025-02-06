@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,6 +23,9 @@ const Header = () => {
           <a href="#" className="hover:text-yellow-300 transition duration-300">
             About
           </a>
+          <Link to="/login" className="hover:text-yellow-300 transition duration-300">
+            Login
+          </Link>
         </nav>
         <button className="md:hidden focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
           <svg
@@ -48,6 +52,9 @@ const Header = () => {
           </a>
           <a href="#" className="block py-2 px-4 text-sm hover:bg-blue-800">
             About
+          </a>
+          <a href="/login" className="block py-2 px-4 text-sm hover:bg-blue-800">
+            Login
           </a>
         </div>
       )}
