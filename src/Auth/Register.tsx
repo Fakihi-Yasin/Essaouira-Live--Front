@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 const Register = () => {
 
   const navigate = useNavigate();
@@ -19,7 +16,7 @@ const Register = () => {
 
     // Email validation function
     const validateEmail = (email) => {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     };
 
@@ -135,6 +132,5 @@ const Register = () => {
     </div>
   );
 };
-
 export default Register;
 

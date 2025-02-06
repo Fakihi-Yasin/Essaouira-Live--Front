@@ -6,14 +6,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // ✅ Corrected hook
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     if (email === "user@example.com" && password === "password") {
-      navigate("/dashboard"); // ✅ Redirect to the dashboard
+      navigate("/dashboard");
     } else {
       setError("Invalid email or password");
     }
