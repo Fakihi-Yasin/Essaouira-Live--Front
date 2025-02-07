@@ -26,6 +26,7 @@ const Header = () => {
           <Link to="/login" className="hover:text-yellow-300 transition duration-300">
             Login
           </Link>
+
         </nav>
         <button className="md:hidden focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
           <svg
