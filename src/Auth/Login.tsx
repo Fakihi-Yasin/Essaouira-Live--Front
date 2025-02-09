@@ -1,6 +1,8 @@
 "use client";
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,16 +10,42 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
 
-    if (email === "user@example.com" && password === "password") {
-      navigate("/dashboard");
-    } else {
-      setError("Invalid email or password");
-    }
-  };
+  const handelLogin = async(e) =>{
+    e.preventDefault();
+
+    if (!email || !password) {
+        toast.error("Please enter your email and password.");
+        return;
+      }
+
+      try {
+        const response = await axios.post("http://localhost:3000/auth/login",
+          {
+            email,
+            password,
+          }
+        ); 
+  
+        const data = response.data;
+        if (response.status === 201) {
+          localStorage.setItem('token',data.access_token);
+          console.log(response.data);
+  
+            toast.success("Login successful!");
+              setTimeout(() => {
+                navigate("/"); 
+              }, 1000);
+          }
+         else {
+          toast.error("Login failed.");
+        }
+      } catch (error) {
+        toast.error("Login failed.");
+        console.error("Login error:", error);
+      }
+
+      };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-sand-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -25,7 +53,7 @@ const Login = () => {
         <h2 className="text-center text-3xl font-extrabold text-blue-900">
           Sign in to Essaouira Live
         </h2>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={handelLogin}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email-address" className="sr-only">

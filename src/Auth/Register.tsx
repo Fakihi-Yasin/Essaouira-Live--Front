@@ -40,7 +40,7 @@ const Register = () => {
       if(responce.status === 201){
         toast.success("Registration successful! Virify You Email");        
         setTimeout(() => {
-          navigate("/login-form");
+          navigate("/Login");
         }, 2000); 
       }else{
         toast.error( "Registration failed.");
