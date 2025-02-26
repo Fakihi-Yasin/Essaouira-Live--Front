@@ -47,7 +47,8 @@ const Register = () => {
       }
     }catch(error){
       toast.error("Error connecting to the server");        
-      console.error("Registration error:", error);    }
+      console.error("Registration error:", error);    
+    }
 
   }
 
